@@ -18,7 +18,7 @@ uint32_t TaskIDCounter = 0; // we using ID as invalid ID
 ERROR_CODE ErrorCode = NO_ERROR;
 ERROR_CODE LastErrorCode = NO_ERROR;
 
-char str[50];
+char str[32];
 
 void schedulerInit(){
 	TaskList.head = NULL;
@@ -28,7 +28,9 @@ void schedulerInit(){
 void schedulerUpdate(){
 	// checking the head of task list, and decrease the delay time
 	timestamp+=10;  // increase 10 ms each
+	sprintf(str, "Timestamp: %ld ms\r\n", timestamp);
 	// report back to uart channel the timestamp value
+	writeMessage(str);
 	if(TaskList.size && TaskList.head -> Delay > 0) TaskList.head -> Delay--;
 }
 
@@ -160,11 +162,7 @@ unsigned char schedulerAddTask(void (*functionPointer)(), unsigned int DELAY, un
 }
 
 void schedulerDispatcher(){
-	while(TaskList.size != 0 &&TaskList.head -> Delay == 0){
-		// report timeout task
-		uint32_t time_point = timestamp;
-		sprintf(str, "TaskID: %ld timeout at timestamp: %ld ms\r\n", TaskList.head -> TaskID, time_point);
-		writeMessage(str);
+	while(TaskList.head -> Delay == 0 && TaskList.head != NULL){
 		// execute all task timed out
 		(*TaskList.head -> TaskPointer)();
 		// add the task back to task list if the task is periodic
