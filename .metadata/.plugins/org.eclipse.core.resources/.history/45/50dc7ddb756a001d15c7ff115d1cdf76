@@ -18,7 +18,7 @@ uint32_t TaskIDCounter = 0; // we using ID as invalid ID
 ERROR_CODE ErrorCode = NO_ERROR;
 ERROR_CODE LastErrorCode = NO_ERROR;
 
-char str[32];
+char str[20];
 
 void schedulerInit(){
 	TaskList.head = NULL;
@@ -27,8 +27,8 @@ void schedulerInit(){
 
 void schedulerUpdate(){
 	// checking the head of task list, and decrease the delay time
-	timestamp+=10;  // increase 10 ms each
-	sprintf(str, "Timestamp: %ld ms\r\n", timestamp);
+	timestamp++;  // increase 10 ms each
+	sprintf(str, "Timestamp: %ld\r\n", timestamp);
 	writeMessage(str);
 	if(TaskList.size && TaskList.head -> Delay > 0) TaskList.head -> Delay--;
 }
