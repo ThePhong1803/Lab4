@@ -123,6 +123,12 @@ int main(void)
 
   //add button control task
   schedulerAddTask(initButton, 0, 0); // one shot task
+
+  // because timestamp in print every time a task is execute,
+  // but input reading running as soon as scheduler update
+  // so a lot of message will be written to uart, cause simulatin to slow down
+  // if you want to put button reading in scheduler, then uncomment line below
+//#define checktimestamp
   schedulerAddTask(button_reading, 5, 1); // scan button every 10 ms
   schedulerAddTask(toggleLedRed, 0, 50); // 50 * 10 ms = 500 ms second period
   schedulerAddTask(toggleLedYellow, 0, 100); // 1 second period task

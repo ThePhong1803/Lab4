@@ -29,9 +29,7 @@ void schedulerUpdate(){
 	// checking the head of task list, and decrease the delay time
 	timestamp+=10;  // increase 10 ms each
 	sprintf(str, "Timestamp: %ld ms\r\n", timestamp);
-	// report back to uart channel the timestamp value
 	writeMessage(str);
-	// report back to uart channel the timestamp value
 	if(TaskList.size && TaskList.head -> Delay > 0) TaskList.head -> Delay--;
 }
 

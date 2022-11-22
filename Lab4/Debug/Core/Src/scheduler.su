@@ -1,9 +1,9 @@
 scheduler.c:23:6:schedulerInit	4	static
 scheduler.c:28:6:schedulerUpdate	8	static
-scheduler.c:36:5:deleteTask	24	static
-scheduler.c:91:13:schedulerDeleteTask	24	static
-scheduler.c:102:5:addTask	32	static
-scheduler.c:146:15:schedulerAddTask	32	static
-scheduler.c:163:6:schedulerDispatcher	8	static
-scheduler.c:177:6:schedulerReportStatus	4	static
-scheduler.c:200:6:schedulerSleep	4	static
+scheduler.c:38:5:deleteTask	24	static
+scheduler.c:93:13:schedulerDeleteTask	24	static
+scheduler.c:104:5:addTask	32	static
+scheduler.c:148:15:schedulerAddTask	32	static
+scheduler.c:165:6:schedulerDispatcher	8	static
+scheduler.c:179:6:schedulerReportStatus	4	static
+scheduler.c:202:6:schedulerSleep	4	static

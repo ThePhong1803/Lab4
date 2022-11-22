@@ -31,7 +31,6 @@ void schedulerUpdate(){
 	sprintf(str, "Timestamp: %ld ms\r\n", timestamp);
 	// report back to uart channel the timestamp value
 	writeMessage(str);
-	// report back to uart channel the timestamp value
 	if(TaskList.size && TaskList.head -> Delay > 0) TaskList.head -> Delay--;
 }
 
